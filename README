@@ -1,0 +1,46 @@
+Architecture:
+The application is a Maven project built on the Spring Boot framework, organized into two layers: "application" and "infrastructure", following the "ports and adapters" design pattern.
+
+Performance:
+To optimize processing time for calls to external services like "translate" and "scoring", I've implemented an asynchronous service (AsyncScoringService) to handle these calls. This service also incorporates caching using @Cacheable.
+
+Tests:
+For testing purposes, Mockito and MockMvc were used.
+
+Execution Steps:
+To use the application, follow these steps:
+
+1- Clean and package the Maven project:
+- mvn clean package
+
+2- Execute the application using the generated JAR file:
+- java -jar target/ravenpack-0.0.1-SNAPSHOT.jar
+
+3- execute with a curl example:
+curl --location 'localhost:8080/score' \
+--header 'Content-Type: text/plain' \
+--data 'user_id, message
+123,hello
+123,bye
+1231,hello
+1232,bye
+1234,hello
+123,bye
+123,hello
+123,bye
+1231,hello
+1232,bye
+1234,hello
+123,bye
+123,hello
+123,bye
+1231,hello
+1232,bye
+1234,hello
+123,bye
+123,hello
+123,bye
+1231,hello
+1232,bye
+1234,hello
+123,bye'
